@@ -23,7 +23,7 @@ This is a simple Bingo web application called **Elektriauto BINGO** where users 
 
 ## Project Structure
 
-```
+```text
 .
 ├── index.html         # Main HTML file for the Bingo application
 ├── data.json          # JSON file containing Bingo prompts and win conditions
@@ -35,7 +35,7 @@ This is a simple Bingo web application called **Elektriauto BINGO** where users 
     └── icon-512x512.png # Application icon
 ```
 
-### Key Files:
+### Key Files
 
 - **index.html**: This is the main layout file that structures the Bingo game, including the grid and buttons for interaction.
 - **data.json**: Holds the content and configurations like Bingo prompts, winning patterns, and success messages.
