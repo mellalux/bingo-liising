@@ -1,41 +1,49 @@
-// Function to check if specific cells are selected
-function checkSelectedCells(cells, indexes) {
-    // Ensure that 'indexes' is an array
-    if (!Array.isArray(indexes)) {
-        console.error("The 'indexes' parameter must be an array.");
-        return false;
-    }
-
-    // Ensure that 'cells' is defined and has enough elements
-    if (!Array.isArray(cells) || cells.length === 0) {
-        console.error("The 'cells' array is not defined or empty.");
-        return false;
-    }
-
-    // Use 'every()' to check if all specific cells are selected
-    var allSelected = indexes.every(function(index) {
-        // Ensure the index is valid within the cells array
-        if (cells[index] && cells[index].selected !== undefined) {
-            return cells[index].selected; // Return true if the cell is selected
-        } else {
-            console.error("Cell at index " + index + " is not valid.");
+$(document).ready(function() {
+    
+    // Function to check if specific cells are selected
+    const checkSelectedCells = (function(cells, indexes) {
+        // Ensure that 'indexes' is an array
+        if (!Array.isArray(indexes)) {
+            console.error("The 'indexes' parameter must be an array.");
             return false;
         }
+
+        // Ensure that 'cells' is defined and has enough elements
+        if (!Array.isArray(cells) || cells.length === 0) {
+            console.error("The 'cells' array is not defined or empty.");
+            return false;
+        }
+
+        // Use 'every()' to check if all specific cells are selected
+        var allSelected = indexes.every(function(index) {
+            // Ensure the index is valid within the cells array
+            if (cells[index] && cells[index].selected !== undefined) {
+                return cells[index].selected; // Return true if the cell is selected
+            } else {
+                console.error("Cell at index " + index + " is not valid.");
+                return false;
+            }
+        });
+        
+        return allSelected; // Return true if all cells are selected, else false
     });
 
-    return allSelected; // Return true if all cells are selected, else false
-}
+    // Function to shuffle an array using Fisher-Yates (Knuth) Shuffle
+    const shuffleArray = (function(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    });
 
-// Function to shuffle an array using Fisher-Yates (Knuth) Shuffle
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-
-$(document).ready(function() {
+    // Disable text selection globally
+    $('body').css({
+        'user-select': 'none',
+        '-webkit-user-select': 'none',
+        '-moz-user-select': 'none',
+        '-ms-user-select': 'none'
+    });
 
     var cells = [];
     var winnums;
