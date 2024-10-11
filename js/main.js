@@ -20,7 +20,6 @@ $(document).ready(function() {
             if (cells[index] && cells[index].selected !== undefined) {
                 return cells[index].selected; // Return true if the cell is selected
             } else {
-                console.error("Cell at index " + index + " is not valid.");
                 return false;
             }
         });
@@ -90,7 +89,9 @@ $(document).ready(function() {
 
             // Lisa veerg viimati loodud ritta
             var $lastRow = $grid.children().last();
-            $lastRow.append('<div id="cell' + index + '" class="col cell unselected">' + cell.value + '</div>');
+            cell.id = 'cell' + index;
+            cell.selected = false;
+            $lastRow.append('<div id="cell' + index + '" class="col cell unselected">' + cell.text + '</div>');
         });
 
     }).fail(function() {

@@ -5,15 +5,15 @@
     "reset": "Uuesti",
     "question": "Puuduta ruutu, kui see puudutab sind",
     "cell": [
-        {"id": "cell0", "value": "Olen sõitnud elektriautoga", "selected": false},
-        {"id": "cell1", "value": "Olen laadinud elektriautot sõbra juures", "selected": false},
-        {"id": "cell2", "value": "Olen liisinud autot", "selected": false},
-        {"id": "cell3", "value": "Tean inimest, kes vahetab liisingu autot iga aasta", "selected": false},
-        {"id": "cell4", "value": "Mul on kõikide tanklakettide sooduskaart", "selected": false},
-        {"id": "cell5", "value": "Oman või olen sõitnud hübriid autoga", "selected": false},
-        {"id": "cell6", "value": "Olen vähemalt korra läinud parkalas vale auto ust avama", "selected": false},
-        {"id": "cell7", "value": "Ma ei tea mis vahe on kasutus ja kapitalirendil", "selected": false},
-        {"id": "cell8", "value": "Jätan alati talverehvide vahetuse viimasele minutile", "selected": false}
+        {"text": "Olen sõitnud elektriautoga"},
+        {"text": "Olen laadinud elektriautot sõbra juures"},
+        {"text": "Olen liisinud autot"},
+        {"text": "Tean inimest, kes vahetab liisingu autot iga aasta"},
+        {"text": "Mul on kõikide tanklakettide sooduskaart"},
+        {"text": "Oman või olen sõitnud hübriid autoga"},
+        {"text": "Olen vähemalt korra läinud parkalas vale auto ust avama"},
+        {"text": "Ma ei tea mis vahe on kasutus ja kapitalirendil"},
+        {"text": "Jätan alati talverehvide vahetuse viimasele minutile"}
     ],
     "variant": [
         {"num": [0,2,6,8], "win": "Nurgad koos!", "gift": "Täna nurgad bingos, homme omanik elektriauto passis."},
