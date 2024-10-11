@@ -54,25 +54,48 @@ $(document).ready(function() {
         $("#reset").text(data.reset);
 
         // Shuffle the cell array
-        //var cell = shuffleArray(data.cell.slice());
+        // var cell = shuffleArray(data.cell.slice());
         cells = data.cell.slice();
+            
+        // Leia massiivi pikkus
+        var elementCount = cells.length;
 
-        // Populate HTML elements with shuffled values       
-        for (let i = 0; i < cells.length; i++) {
-            $("#cell" + i).text(cells[i].value);
+        // Arvuta ruutjuur massiivi pikkusest
+        var gridSize = Math.sqrt(elementCount);
+
+        // Leia HTML element, kuhu grid pannakse
+        var $grid = $('#grid');
+        $grid.empty(); // Tühjenda, kui midagi on
+
+        // Kontrolli, kas ruutjuur on täisarv
+        if (gridSize % 1 !== 0) {
+            $grid.append("<p><strong>Error</strong>: The number of massive elements does not form a square!</p>");
+            return;
         }
+
+        // Jaga elemendid ridadesse
+        $.each(cells, function(index, cell) {
+            // Iga `gridSize`-nda elemendi järel loo uus rida
+            if (index % gridSize === 0) {
+                $grid.append('<div class="row justify-content-center"></div>');
+            }
+
+            // Lisa veerg viimati loodud ritta
+            var $lastRow = $grid.children().last();
+            $lastRow.append('<div id="cell' + index + '" class="col cell unselected">' + cell.value + '</div>');
+        });
 
     }).fail(function() {
         console.error('Failed to load JSON data.');
         $("#debug").text("Failed to load JSON data.");
     });
 
-    // Add click event for .col elements
-    $(".cell").click(function() {
+    // Add click event for dynamically created .cell elements using event delegation
+    $(document).on('click', '.cell', function() {
         var id = $(this).attr("id");
 
         // Find the corresponding cell in the array
-        var cellIndex = cells.findIndex(cells => cells.id === id);
+        var cellIndex = cells.findIndex(cell => cell.id === id);
 
         // Toggle the selected state
         cells[cellIndex].selected = !cells[cellIndex].selected;
@@ -83,9 +106,6 @@ $(document).ready(function() {
         } else {
             $(this).removeClass('selected');
         }
-
-        // Update the debug information with the current state of cells
-        // $("#debug").text("Debug: Cell " + cellIndex + " is " + (cells[cellIndex].selected ? "selected" : "unselected"));
 
         for (let i = 0; i < winnums.length; i++) {
             if (checkSelectedCells(cells, winnums[i].num)) {
@@ -98,16 +118,12 @@ $(document).ready(function() {
 
     });
 
-    $('#win').click(function() {
+    $('#win').on('click', function() {
         location.reload(true);  // Forces the browser to reload the page from the server (ignoring the cache)
     });
 
-    $('#reset').click(function() {
+    $('#reset').on('click', function() {
         location.reload(true);  // Forces the browser to reload the page from the server (ignoring the cache)
     });
 
-
-    // $("#debug").text("Debug");
-    
 });
-

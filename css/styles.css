@@ -12,10 +12,6 @@ body {
     align-items: center;
 }
 
-.content {
-    text-align: center;
-}
-
 #header {
     color: white;
     font: 3em arial;
@@ -67,27 +63,26 @@ body {
 #debug {
     color: white;
     font: arial;
-    margin-top: 35px;
+    margin: 35px auto;
 }
 
 
-.board {
-    min-width: 440px;
-    /*background: white;*/
-    padding: 15px 25px;
-}
+/*.board {
+     min-width: 440px;
+    /*background: white;
+    margin: 0 auto;
+}*/
 
 .board .cell {
     display: flex;
-    /*background-color: #dbf8ed;*/
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     cursor: pointer;
     font: 1em arial;
     font-weight: bold;
     margin: 5px;
-    width: 160px;
-    height: 160px;
+    max-width: 150px;
+    height: 150px;
 }
 
 .unselected {
