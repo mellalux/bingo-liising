@@ -27,7 +27,8 @@ This is a simple Bingo web application called **Elektriauto BINGO** where users 
 .
 ├── index.html         # Main HTML file for the Bingo application
 ├── data.json          # JSON file containing Bingo prompts and win conditions
-├── main.js            # JavaScript file handling the game logic and interactivity
+├── js/
+│   └── main.js            # JavaScript file handling the game logic and interactivity
 ├── css/
 │   └── styles.css     # Custom styles for the application
 └── img/
