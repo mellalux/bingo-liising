@@ -104,11 +104,14 @@ $(document).ready(function() {
         $("#reset").text(data.reset);
         $("#install").text(data.install);
 
-        // Shuffle the cell array
-        // var cell = shuffleArray(data.cell.slice());
-     //   cells = data.cell.slice();
+        var texts;
 
-        const texts = data.cell.slice();
+        // Shuffle the cell array
+        if (data.shuffle) {
+            texts = shuffleArray(data.cell.slice());
+       } else {
+            texts = data.cell.slice();
+        }
             
         // Leia massiivi pikkus
         var elementCount = texts.length;
