@@ -1,6 +1,7 @@
 const CACHE_NAME = 'bingo-v1';
 const urlsToCache = [
   'index.html',
+  'data.json',
   'css/styles.css',
   'img/icon-192x192.png',
   'img/icon-512x512.png',

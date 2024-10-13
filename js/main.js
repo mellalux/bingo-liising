@@ -1,38 +1,38 @@
-    let deferredPrompt;
-    const addToHomeScreenButton = document.getElementById('install');
+    // let deferredPrompt;
+    // const addToHomeScreenButton = document.getElementById('install');
 
-    // Listen for beforeinstallprompt event
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault(); // Prevent the automatic mini-infobar
-      deferredPrompt = e;
+    // // Listen for beforeinstallprompt event
+    // window.addEventListener('beforeinstallprompt', (e) => {
+    //   e.preventDefault(); // Prevent the automatic mini-infobar
+    //   deferredPrompt = e;
 
-      // Show the Add to Home Screen button
-      addToHomeScreenButton.style.display = 'block';
+    //   // Show the Add to Home Screen button
+    //   addToHomeScreenButton.style.display = 'block';
 
-      // Add click event to button
-      addToHomeScreenButton.addEventListener('click', () => {
-        // Show the install prompt
-        deferredPrompt.prompt();
+    //   // Add click event to button
+    //   addToHomeScreenButton.addEventListener('click', () => {
+    //     // Show the install prompt
+    //     deferredPrompt.prompt();
         
-        // Wait for user to respond to the prompt
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the install prompt');
-          } else {
-            console.log('User dismissed the install prompt');
-          }
-          deferredPrompt = null; // Reset the prompt
-        });
-      });
-    });
+    //     // Wait for user to respond to the prompt
+    //     deferredPrompt.userChoice.then((choiceResult) => {
+    //       if (choiceResult.outcome === 'accepted') {
+    //         console.log('User accepted the install prompt');
+    //       } else {
+    //         console.log('User dismissed the install prompt');
+    //       }
+    //       deferredPrompt = null; // Reset the prompt
+    //     });
+    //   });
+    // });
 
-    // Listen for appinstalled event
-    window.addEventListener('appinstalled', (event) => {
-      console.log('PWA installed');
+    // // Listen for appinstalled event
+    // window.addEventListener('appinstalled', (event) => {
+    //   console.log('PWA installed');
       
-      // Hide the Add to Home Screen button once installed
-      addToHomeScreenButton.style.display = 'none';
-    });
+    //   // Hide the Add to Home Screen button once installed
+    //   addToHomeScreenButton.style.display = 'none';
+    // });
 
 $(document).ready(function() {
     
@@ -70,6 +70,13 @@ $(document).ready(function() {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    });
+
+    const resetStates = (function() {
+        $.each(cells, function(index, cell) {
+            cells[index].selected = false;
+            $('#'+cells[index].id).removeClass('selected');
+        });
     });
 
     // Disable text selection globally
@@ -180,11 +187,12 @@ $(document).ready(function() {
     });
 
     $('#win').on('click', function() {
-        location.reload(true);  // Forces the browser to reload the page from the server (ignoring the cache)
+        resetStates();
+        $('#win').hide();
     });
 
     $('#reset').on('click', function() {
-        location.reload(true);  // Forces the browser to reload the page from the server (ignoring the cache)
+        resetStates();
     });
 
     // Register service worker
