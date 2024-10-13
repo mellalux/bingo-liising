@@ -1,7 +1,8 @@
 {
     "name": "Developer BINGO",
     "short_name": "BINGO",
-    "start_url": "/bingo",
+    "description": "This is a simple Bingo web application called **Elektriauto BINGO** where users can interact with a grid of cells related to electric vehicle experiences.",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",

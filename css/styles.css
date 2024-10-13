@@ -107,3 +107,13 @@ body {
     border-radius: 6px;
     border-width: 0px;
 }
+
+#install {
+    background-color: #ffee00;
+    padding: 8px;
+    font-size: 60%;
+    font-weight: bold;
+    color: #ff5f00;
+    border-radius: 6px;
+    border-width: 0px;
+}

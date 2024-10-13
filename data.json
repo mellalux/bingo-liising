@@ -4,16 +4,17 @@
     "bingo": "BINGO",
     "reset": "Uuesti",
     "question": "Puuduta ruutu, kui see puudutab sind",
+    "install": "Installi äpp",
     "cell": [
-        {"text": "Olen sõitnud elektriautoga"},
-        {"text": "Olen laadinud elektriautot sõbra juures"},
-        {"text": "Olen liisinud autot"},
-        {"text": "Tean inimest, kes vahetab liisingu autot iga aasta"},
-        {"text": "Mul on kõikide tanklakettide sooduskaart"},
-        {"text": "Oman või olen sõitnud hübriid autoga"},
-        {"text": "Olen vähemalt korra läinud parkalas vale auto ust avama"},
-        {"text": "Ma ei tea mis vahe on kasutus ja kapitalirendil"},
-        {"text": "Jätan alati talverehvide vahetuse viimasele minutile"}
+         "Olen sõitnud elektriautoga",
+         "Olen laadinud elektriautot sõbra juures",
+         "Olen liisinud autot",
+         "Tean inimest, kes vahetab liisingu autot iga aasta",
+         "Mul on kõikide tanklakettide sooduskaart",
+         "Oman või olen sõitnud hübriid autoga",
+         "Olen vähemalt korra läinud parkalas vale auto ust avama",
+        "Ma ei tea mis vahe on kasutus ja kapitalirendil",
+        "Jätan alati talverehvide vahetuse viimasele minutile"
     ],
     "variant": [
         {"num": [0,2,6,8], "win": "Nurgad koos!", "gift": "Täna nurgad bingos, homme omanik elektriauto passis."},
