@@ -1,3 +1,34 @@
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 11px;
+        line-height: 1;
+    }
+    .cell {
+        max-width: 100px;
+        height: 100px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+    .cell {
+        max-width: 160px;
+        height: 160px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    body {
+        font-size: 20px;
+    }
+    .cell {
+        max-width: 200px;
+        height: 200px;
+    }
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -60,29 +91,20 @@ body {
     font-weight: bold;
 }
 
-#debug {
-    color: white;
-    font: arial;
-    margin: 35px auto;
-}
-
-
-/*.board {
-     min-width: 440px;
-    /*background: white;
-    margin: 0 auto;
-}*/
-
-.board .cell {
+.cell {
     display: flex;
     justify-content: center; 
     align-items: center;
     cursor: pointer;
-    font: 1em arial;
+    font-size: 1em arial;
     font-weight: bold;
     margin: 5px;
-    max-width: 150px;
-    height: 150px;
+}
+
+#debug {
+    color: white;
+    font: arial;
+    margin: 35px auto;
 }
 
 .unselected {
@@ -102,16 +124,6 @@ body {
 .uuesti {
     background-color: #ffee00;
     padding: 12px;
-    font-weight: bold;
-    color: #ff5f00;
-    border-radius: 6px;
-    border-width: 0px;
-}
-
-#install {
-    background-color: #ffee00;
-    padding: 8px;
-    font-size: 60%;
     font-weight: bold;
     color: #ff5f00;
     border-radius: 6px;
