@@ -1,7 +1,7 @@
 
-# Elektriauto BINGO
+# Developer BINGO
 
-This is a simple Bingo web application called **Elektriauto BINGO** where users can interact with a grid of cells related to electric vehicle experiences. The goal is to select cells based on the prompts, and if a winning combination is selected, a success message with a prize is displayed.
+Developer BINGO is a simple web application where users can interact with a grid of cells containing different statements related to electric vehicle experiences. The goal is to select the relevant cells and achieve a winning combination.
 
 ## Table of Contents
 
@@ -11,71 +11,66 @@ This is a simple Bingo web application called **Elektriauto BINGO** where users 
 - [How to Play](#how-to-play)
 - [Customization](#customization)
 - [Technologies Used](#technologies-used)
+- [Service Worker](#service-worker)
+- [License](#license)
 
 ## Features
 
-- Interactive Bingo grid with predefined prompts.
-- Supports multiple winning patterns (e.g., corners, diagonal).
-- Visual feedback on cell selection.
-- Shuffle functionality for a new board on each reset.
-- Fully responsive layout using Bootstrap.
-- Simple JSON configuration for game settings and prompts.
+- Interactive grid with statements related to electric vehicle experiences.
+- Multiple winning conditions (e.g., corners, diagonals).
+- Visual feedback when selecting cells.
+- Shuffle functionality to randomize the grid.
+- Responsive design using Bootstrap.
+- Service worker for offline functionality.
 
 ## Project Structure
 
-```text
-.
-├── index.html         # Main HTML file for the Bingo application
-├── data.json          # JSON file containing Bingo prompts and win conditions
-├── js/
-│   └── main.js            # JavaScript file handling the game logic and interactivity
-├── css/
-│   └── styles.css     # Custom styles for the application
-└── img/
-    └── icon-512x512.png # Application icon
 ```
-
-### Key Files
-
-- **index.html**: This is the main layout file that structures the Bingo game, including the grid and buttons for interaction.
-- **data.json**: Holds the content and configurations like Bingo prompts, winning patterns, and success messages.
-- **main.js**: Contains all the game logic such as grid creation, handling clicks, checking win conditions, and resetting the game.
+.
+├── index.html         # Main HTML file
+├── manifest.json      # Web manifest file for PWA
+├── service-worker.js  # Service worker for offline support
+├── data.json          # JSON file containing the Bingo data
+├── js/main.js         # JavaScript file for game logic
+├── css/styles.css     # Custom CSS for the application
+└── icons/             # Application icons for different devices
+```
 
 ## Getting Started
 
-1. Clone or download the project files.
-2. Open `index.html` in any modern web browser.
+To run the application locally, follow these steps:
 
-Alternatively, you can host it on any static web server for better accessibility.
+1. Clone the repository or download the project files.
+2. Open `index.html` in your web browser.
+
+Alternatively, you can deploy the project on any static web server for wider access.
 
 ## How to Play
 
-1. Start the game by interacting with the Bingo grid on the homepage.
-2. Each cell has a prompt related to electric vehicles (e.g., "I've driven an electric car").
-3. Click on a cell if it applies to you.
-4. If a winning pattern is achieved (e.g., all corners or a diagonal line), you will see a congratulatory message and a prize description.
-5. To reset the game, click the **Alusta uuesti** button.
+1. The Bingo grid displays several statements. Click on the cells that apply to you.
+2. When a winning pattern (e.g., a diagonal or corners) is achieved, a success message will appear.
+3. Use the "Reset" button to clear your selections and start a new game.
 
 ## Customization
 
-You can easily modify the game by editing the `data.json` file:
+You can customize the game by editing the `data.json` file. This file allows you to:
 
-- **title**: The title of the game.
-- **header**: The main header text displayed in the game.
-- **bingo**: The text that appears when a Bingo is achieved.
-- **reset**: The text for the reset button.
-- **question**: The prompt displayed above the Bingo grid.
-- **cell**: An array of Bingo prompts. Each item has an `id`, `value` (the prompt text), and `selected` (default is `false`).
-- **variant**: Defines the winning conditions and corresponding messages.
+- Change the Bingo grid statements.
+- Modify the winning patterns and associated messages.
+- Enable or disable the shuffle option for the grid.
 
 ## Technologies Used
 
 - **HTML5** for structuring the web page.
-- **Bootstrap** for responsive layout and styling.
+- **CSS3 (Bootstrap)** for responsive design and layout.
+- **JavaScript (ES6)** for game logic and dynamic updates.
 - **jQuery** for DOM manipulation and event handling.
-- **JSON** for storing the Bingo game data and configurations.
-- **JavaScript (ES6)** for game logic and interactivity.
+- **Service Worker** for offline capabilities (as a Progressive Web App).
+
+## Service Worker
+
+The `service-worker.js` file enables the app to work offline by caching important files, such as HTML, CSS, JavaScript, and images. This improves performance and allows users to access the app without an internet connection.
 
 ## License
 
-This project is open-source and free to use under the MIT License.
+This project is licensed under the MIT License. You are free to use, modify, and distribute the application with proper attribution.
