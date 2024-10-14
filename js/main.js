@@ -1,39 +1,3 @@
-    // let deferredPrompt;
-    // const addToHomeScreenButton = document.getElementById('install');
-
-    // // Listen for beforeinstallprompt event
-    // window.addEventListener('beforeinstallprompt', (e) => {
-    //   e.preventDefault(); // Prevent the automatic mini-infobar
-    //   deferredPrompt = e;
-
-    //   // Show the Add to Home Screen button
-    //   addToHomeScreenButton.style.display = 'block';
-
-    //   // Add click event to button
-    //   addToHomeScreenButton.addEventListener('click', () => {
-    //     // Show the install prompt
-    //     deferredPrompt.prompt();
-        
-    //     // Wait for user to respond to the prompt
-    //     deferredPrompt.userChoice.then((choiceResult) => {
-    //       if (choiceResult.outcome === 'accepted') {
-    //         console.log('User accepted the install prompt');
-    //       } else {
-    //         console.log('User dismissed the install prompt');
-    //       }
-    //       deferredPrompt = null; // Reset the prompt
-    //     });
-    //   });
-    // });
-
-    // // Listen for appinstalled event
-    // window.addEventListener('appinstalled', (event) => {
-    //   console.log('PWA installed');
-      
-    //   // Hide the Add to Home Screen button once installed
-    //   addToHomeScreenButton.style.display = 'none';
-    // });
-
 $(document).ready(function() {
     
     // Function to check if specific cells are selected
@@ -102,7 +66,6 @@ $(document).ready(function() {
         $("#question").text(data.question);
         $("#bigText").text(data.bingo);
         $("#reset").text(data.reset);
-        $("#install").text(data.install);
 
         var texts;
 
