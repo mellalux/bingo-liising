@@ -51,7 +51,7 @@ $(document).ready(function() {
         '-ms-user-select': 'none'
     });
 
-    var cells = [{}];
+    var cells = [];
     var winnums;
     
     $('#win').hide();
@@ -103,6 +103,7 @@ $(document).ready(function() {
             var $lastRow = $grid.children().last();
 
             // Initialize cells[index] as an object
+            cells[index] = {};  // <--- Ensure cells[index] is an object
             cells[index].id = 'cell' + index;
             cells[index].text = cell;
             cells[index].selected = false;
