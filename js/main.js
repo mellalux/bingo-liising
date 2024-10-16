@@ -120,6 +120,11 @@ $(document).ready(function() {
         $("#bigText").text(data.bingo);
         $("#reset").text(data.reset);
 
+        // Ensure 'texts' exists in the data
+        if (!data.texts || !Array.isArray(data.texts)) {
+            console.error("No valid 'texts' array found in JSON.");
+            return;
+        }
 
         // Shuffle the cell array
         if (data.shuffle) {
