@@ -35,7 +35,58 @@ $(document).ready(function() {
         }
         return array;
     });
+    
+    const createGrid = (function(gridSize, texts) {
 
+        // Shuffle the texts array to ensure unique random text selection
+        const shuffleArray = function(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];  // Swap elements
+            }
+            return array;
+        };
+    
+        // Shuffle the texts array
+        const shuffledTexts = shuffleArray(texts.slice());
+    
+        // Get the grid element
+        var $grid = $('#grid');
+        $grid.empty(); // Clear any existing content
+    
+        // Ensure grid size forms a square
+        if (gridSize % 1 !== 0) {
+            $grid.append("<p><strong>Error</strong>: The number of massive elements does not form a square!</p>");
+            return;
+        }
+    
+        // Loop to create grid
+        for (let index = 0; index < gridSize * gridSize; index++) {
+            // Create a new row for every `gridSize` elements
+            if (index % gridSize === 0) {
+                $grid.append('<div class="row justify-content-center"></div>');
+            }
+    
+            // Get the last created row
+            var $lastRow = $grid.children().last();
+    
+            // Initialize cells[index] as an object
+            cells[index] = {};  // Ensure cells[index] is an object
+            cells[index].id = 'cell' + index;
+            cells[index].text = shuffledTexts[index];  // Assign a unique random text
+            cells[index].selected = false;
+    
+            // Create a new column with custom HTML
+            var $newCol = $('<div>', { id: 'cell' + index, class: 'col cell unselected' });
+    
+            // Add the HTML content into the column
+            $newCol.html(shuffledTexts[index]);
+    
+            // Append the new column to the last row
+            $lastRow.append($newCol);
+        }
+    });
+    
     const resetStates = (function() {
         $.each(cells, function(index, cell) {
             cells[index].selected = false;
@@ -53,6 +104,8 @@ $(document).ready(function() {
 
     var cells = [];
     var winnums;
+    var texts;
+    var gridSize;
     
     $('#win').hide();
 
@@ -67,57 +120,18 @@ $(document).ready(function() {
         $("#bigText").text(data.bingo);
         $("#reset").text(data.reset);
 
-        var texts;
 
         // Shuffle the cell array
         if (data.shuffle) {
-            texts = shuffleArray(data.cell.slice());
-       } else {
-            texts = data.cell.slice();
+            texts = shuffleArray(data.texts.slice());
+        } else {
+            texts = data.texts.slice();
         }
             
-        // Leia massiivi pikkus
-        var elementCount = texts.length;
+        // Ruutjuur 
+        gridSize = data.squareroot;
 
-        // Arvuta ruutjuur massiivi pikkusest
-        var gridSize = Math.sqrt(elementCount);
-
-        // Leia HTML element, kuhu grid pannakse
-        var $grid = $('#grid');
-        $grid.empty(); // Tühjenda, kui midagi on
-
-        // Kontrolli, kas ruutjuur on täisarv
-        if (gridSize % 1 !== 0) {
-            $grid.append("<p><strong>Error</strong>: The number of massive elements does not form a square!</p>");
-            return;
-        }
-
-        // Jaga elemendid ridadesse
-        $.each(texts, function(index, cell) {
-            // Iga `gridSize`-nda elemendi järel loo uus rida
-            if (index % gridSize === 0) {
-                $grid.append('<div class="row justify-content-center"></div>');
-            }
-
-            // Lisa veerg viimati loodud ritta
-            var $lastRow = $grid.children().last();
-
-            // Initialize cells[index] as an object
-            cells[index] = {};  // <--- Ensure cells[index] is an object
-            cells[index].id = 'cell' + index;
-            cells[index].text = cell;
-            cells[index].selected = false;
-
-            // Create a new column with custom HTML
-            var $newCol = $('<div>', { id: 'cell' + index, class: 'col cell unselected' });
-
-            // Add the HTML content into the column
-            $newCol.html(cell);
-
-            // Append the new column to the last row
-            $lastRow.append($newCol);
-
-        });
+        createGrid(gridSize, texts);
 
     }).fail(function() {
         console.error('Failed to load JSON data.');
@@ -154,11 +168,13 @@ $(document).ready(function() {
 
     $('#win').on('click', function() {
         resetStates();
+        createGrid(gridSize, texts);
         $('#win').hide();
     });
 
     $('#reset').on('click', function() {
         resetStates();
+        createGrid(gridSize, texts);
     });
 
 });
