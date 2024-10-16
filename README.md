@@ -1,7 +1,7 @@
 
 # Developer BINGO
 
-Developer BINGO is a simple web application where users can interact with a grid of cells containing different statements related to electric vehicle experiences. The goal is to select the relevant cells and achieve a winning combination.
+Developer BINGO is a simple web application where users can interact with a grid of cells containing different data. The goal is to select the relevant cells and achieve a winning combination.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ Developer BINGO is a simple web application where users can interact with a grid
 
 ## Features
 
-- Interactive grid with statements related to electric vehicle experiences.
+- Interactive grid with data inside.
 - Multiple winning conditions (e.g., corners, diagonals).
 - Visual feedback when selecting cells.
 - Shuffle functionality to randomize the grid.
@@ -47,7 +47,7 @@ Alternatively, you can deploy the project on any static web server for wider acc
 
 ## How to Play
 
-1. The Bingo grid displays several statements. Click on the cells that apply to you.
+1. The Bingo grid displays different information. Click on the cells that apply to you.
 2. When a winning pattern (e.g., a diagonal or corners) is achieved, a success message will appear.
 3. Use the "Reset" button to clear your selections and start a new game.
 
@@ -55,9 +55,35 @@ Alternatively, you can deploy the project on any static web server for wider acc
 
 You can customize the game by editing the `data.json` file. This file allows you to:
 
-- Change the Bingo grid statements.
+- Change the grid data. Put there even image tags.
 - Modify the winning patterns and associated messages.
-- Enable or disable the shuffle option for the grid.
+- Modify all kind of texts on page.
+- Set game grid size. Default is 3x3.
+
+### Example `data.json` Structure:
+
+```json
+{
+    "title": "BINGO",
+    "header": "Elektriauto BINGO",
+    "bingo": "BINGO",
+    "reset": "Uuesti",
+    "question": "Puuduta ruutu, kui see puudutab sind",
+    "squareroot": 3,
+    "texts": [
+        "1", "2", "3", "4", "5", 
+        "6", "7", "8", "9", "10", 
+        "11", "12", "13", "14", "15", 
+        "16", "17", "18", "19", "20", 
+        "21", "22", "23", "24", "25"
+    ],
+    "variant": [
+        {"num": [0, 2, 6, 8], "win": "Nurgad koos!", "gift": "Täna nurgad bingos, homme omanik elektriauto passis."},
+        {"num": [0, 4, 8], "win": "Diagonaal!", "gift": "Vahel lihtsalt kisub diagonaaliks."},
+        {"num": [2, 4, 6], "win": "Yes! Diagonaal!", "gift": "Pikim diagonaal eestis on Narvast Kuressaarde."}
+    ]
+}
+```
 
 ## Technologies Used
 

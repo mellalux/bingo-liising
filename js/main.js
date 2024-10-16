@@ -27,15 +27,6 @@ $(document).ready(function() {
         return allSelected; // Return true if all cells are selected, else false
     });
 
-    // Function to shuffle an array using Fisher-Yates (Knuth) Shuffle
-    const shuffleArray = (function(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    });
-    
     const createGrid = (function(gridSize, texts) {
 
         // Shuffle the texts array to ensure unique random text selection
@@ -125,14 +116,9 @@ $(document).ready(function() {
             console.error("No valid 'texts' array found in JSON.");
             return;
         }
-
-        // Shuffle the cell array
-        if (data.shuffle) {
-            texts = shuffleArray(data.texts.slice());
-        } else {
-            texts = data.texts.slice();
-        }
-            
+        
+        texts = data.texts.slice();
+ 
         // Ruutjuur 
         gridSize = data.squareroot;
 
