@@ -104,6 +104,10 @@ body {
     margin: 5px;
 }
 
+.cell img {
+    width: 90%;
+}
+
 #debug {
     color: white;
     font: arial;
